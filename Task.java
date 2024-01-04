@@ -4,11 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-
 public class Task {
-    @Id
+	
+	@Id
     private Long id;
     private String task;
+	
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", task=" + task + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -17,15 +23,15 @@ public class Task {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getTask() {
 		return task;
 	}
 
-	public void setName(String task) {
+	public void setTask(String task) {
 		this.task = task;
 	}
-	
+
 	public Object getDescription() {
 		// TODO Auto-generated method stub
 		return null;
