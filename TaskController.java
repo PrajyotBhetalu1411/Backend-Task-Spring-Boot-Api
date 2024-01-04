@@ -18,7 +18,7 @@ import com.example.demo.repository.TaskRepository;
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
 
     @Autowired
     public TaskController(TaskRepository taskRepository) {
