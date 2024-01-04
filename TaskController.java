@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Task;
+import com.example.demo.repository.TaskRepository;
 import com.example.demo.service.TaskService;
 
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
-    private TaskService taskService;
+	
+    private  TaskService taskService;
 
     @Autowired
     public TaskController(TaskService taskService) {
@@ -30,14 +32,14 @@ public class TaskController {
         return taskService.findAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addTask")
     public Task createTask(@RequestBody Task task) {
         return taskService.save(task);
     }
 
     @PutMapping("/{id}")
     public Task updateTask(@PathVariable String id, @RequestBody Task updatedTask) {
-        Task task = taskService.findById(id)
+        Task task = ((Object) taskService.findById(id))
                 .orElseThrow(() -> new RuntimeException("Task not found"));
         
         task.setDescription(updatedTask.getDescription());
@@ -48,6 +50,6 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable String id) {
-        taskService.deleteById(id);
+    	taskService.delete(id);
     }
 }
