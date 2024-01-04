@@ -6,11 +6,26 @@ import jakarta.persistence.Id;
 @Entity
 
 public class Task {
-	@Id
+    @Id
     private Long id;
     private String task;
-	
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getTask() {
+		return task;
+	}
+
+	public void setName(String task) {
+		this.task = task;
+	}
+	
 	public Object getDescription() {
 		// TODO Auto-generated method stub
 		return null;
